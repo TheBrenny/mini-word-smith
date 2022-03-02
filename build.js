@@ -2,6 +2,7 @@
 
 const https = require("https");
 const fs = require("fs");
+const adjectives = require("./words/adjectives");
 const adjList = "https://raw.githubusercontent.com/kylestetz/Sentencer/master/words/adjectives.js";
 const nounList = "https://raw.githubusercontent.com/kylestetz/Sentencer/master/words/nouns.js";
 
@@ -16,8 +17,9 @@ async function downloadAdjectiveList(adjectiveCount = 200) {
             return data;
         })
         .then((adjectives) => getRandomItems(adjectives, adjectiveCount))
-        .then((adjectives) => adjectives.sort((a,b) => a.localeCompare(b)))
-        .then((adjectives) => fs.promises.writeFile(`${__dirname}/words/adjectives.js`, `module.exports = ${JSON.stringify(adjectives)};`));
+        .then((adjectives) => adjectives.sort((a, b) => a.localeCompare(b)))
+        .then((adjectives) => fs.promises.writeFile(`${__dirname}/words/adjectives.js`, `module.exports = ${JSON.stringify(adjectives)};`))
+        .then(() => adjectiveCount);
 }
 async function downloadNounList(nounCount = 200) {
     return httpsGet(nounList)
@@ -27,8 +29,9 @@ async function downloadNounList(nounCount = 200) {
             return data;
         })
         .then((nouns) => getRandomItems(nouns, nounCount))
-        .then((adjectives) => adjectives.sort((a, b) => a.localeCompare(b)))
-        .then((nouns) => fs.promises.writeFile(`${__dirname}/words/nouns.js`, `module.exports = ${JSON.stringify(nouns)};`));
+        .then((nouns) => nouns.sort((a, b) => a.localeCompare(b)))
+        .then((nouns) => fs.promises.writeFile(`${__dirname}/words/nouns.js`, `module.exports = ${JSON.stringify(nouns)};`))
+        .then(() => nounCount);
 }
 
 function getRandomItems(items, count) {

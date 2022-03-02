@@ -1,5 +1,5 @@
-const adjectives = require('./words/adjectives.js');
-const nouns = require('./words/nouns.js');
+let adjectives;
+let nouns;
 
 class WordBuilder {
     constructor(template) {
@@ -21,6 +21,11 @@ class WordBuilder {
         return this;
     }
 
+    reloadWordlists() {
+        WordBuilder.reloadWordlists();
+        return this;
+    }
+
     toString(join) {
         return this.words.join(join);
     }
@@ -37,6 +42,22 @@ class WordBuilder {
     static get nouns() {
         return nouns;
     }
+    static reloadWordlists() {
+        try {
+            delete require.cache[require.resolve(`./words/adjectives.js`)];
+            delete require.cache[require.resolve(`./words/nouns.js`)];
+            adjectives = require('./words/adjectives.js');
+            nouns = require('./words/nouns.js');
+        } catch(e) {
+            adjectives = ["Missing"];
+            nouns = ["Words"];
+        }
+    }
+    static get buildScript() {
+        return require("./build");
+    }
 }
+
+WordBuilder.reloadWordlists();
 
 module.exports = WordBuilder;
