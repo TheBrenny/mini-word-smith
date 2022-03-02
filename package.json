@@ -1,6 +1,6 @@
 {
   "name": "mini-word-smith",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A small wordsmith generator which builds smaller word lists from the Sentencer repo",
   "main": "index.js",
   "scripts": {
