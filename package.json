@@ -1,0 +1,28 @@
+{
+  "name": "mini-word-smith",
+  "version": "1.0.0",
+  "description": "A small wordsmith generator which builds smaller word lists from the Sentencer repo",
+  "main": "index.js",
+  "scripts": {
+    "test": "exit 0",
+    "build": "node ./build.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheBrenny/mini-word-smith.git"
+  },
+  "keywords": [
+    "words",
+    "builder",
+    "noun",
+    "adjective",
+    "placeholder",
+    "Sentencer"
+  ],
+  "author": "TheBrenny <iam@justbrenny.me>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TheBrenny/mini-word-smith/issues"
+  },
+  "homepage": "https://github.com/TheBrenny/mini-word-smith#readme"
+}
