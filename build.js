@@ -2,7 +2,6 @@
 
 const https = require("https");
 const fs = require("fs");
-const adjectives = require("./words/adjectives");
 const adjList = "https://raw.githubusercontent.com/kylestetz/Sentencer/master/words/adjectives.js";
 const nounList = "https://raw.githubusercontent.com/kylestetz/Sentencer/master/words/nouns.js";
 
